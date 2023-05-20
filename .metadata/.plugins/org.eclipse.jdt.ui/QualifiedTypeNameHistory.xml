@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="prog3.listagenerica.ListaGenericaEnlazada"/>
-    <fullyQualifiedTypeName name="prog3.listagenerica.ListaGenerica"/>
     <fullyQualifiedTypeName name="prog3.listagenerica.NodoGenerico"/>
+    <fullyQualifiedTypeName name="prog3.listagenerica.ListaGenericaEnlazada"/>
+    <fullyQualifiedTypeName name="prog3.arbolgeneral.ArbolGeneral"/>
+    <fullyQualifiedTypeName name="prog3.listagenerica.ListaGenerica"/>
 </qualifiedTypeNameHistroy>
