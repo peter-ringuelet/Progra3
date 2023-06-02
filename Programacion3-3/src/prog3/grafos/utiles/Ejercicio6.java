@@ -5,12 +5,11 @@ import prog3.colagenerica.*;
 
 public class Ejercicio6 {
 	private Grafo<String> grafo = new Grafo<String>();
-	
 	public ListaGenerica<String> devolverCamino(String ciudad1, String ciudad2) {
 	    ListaGenerica<String> camino = new ListaGenericaEnlazada<>();
 
 	    // Verificar si ciudad1 y ciudad2 existen en el grafo de ciudades
-	    if (!grafo.existeVertice(ciudad1) || !grafo.existeVertice(ciudad2)) {
+	    if (!grafo.existeVertice(new Vertice<>(ciudad1)) || !grafo.existeVertice(new Vertice<>(ciudad2))) {
 	        return camino; // Retorna lista vacía si alguna ciudad no existe
 	    }
 
@@ -22,18 +21,18 @@ public class Ejercicio6 {
 	}
 
 	private void dfs(String ciudadActual, String ciudadDestino, ListaGenerica<String> camino, boolean[] visitado) {
-	    visitado[grafo.posicion(ciudadActual)] = true;
+	    visitado[grafo.vertice(ciudadActual).posicion()] = true;
 	    camino.agregarFinal(ciudadActual);
 
 	    if (ciudadActual.equals(ciudadDestino)) {
 	        return; // Se llegó a la ciudad destino, se termina el recorrido
 	    }
 
-	    ListaGenerica<Arista<String>> adyacentes = grafo.listaDeAdyacentes(ciudadActual);
+	    ListaGenerica<Arista<String>> adyacentes = grafo.listaDeAdyacentes(grafo.vertice(ciudadActual));
 	    adyacentes.comenzar();
 	    while (!adyacentes.fin()) {
-	        String ciudadAdyacente = adyacentes.proximo().verticeDestino();
-	        if (!visitado[grafo.posicion(ciudadAdyacente)]) {
+	        String ciudadAdyacente = adyacentes.proximo().verticeDestino().dato();
+	        if (!visitado[grafo.vertice(ciudadAdyacente).posicion()]) {
 	            dfs(ciudadAdyacente, ciudadDestino, camino, visitado);
 	            if (!camino.estaVacia() && camino.elemento(camino.tamanio() - 1).equals(ciudadDestino)) {
 	                return; // Se encontró el camino, se termina el recorrido
