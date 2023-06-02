@@ -4,6 +4,7 @@ import prog3.listagenerica.*;
 import prog3.colagenerica.*;
 
 public class Recorridos<T> {
+	
 public void dfs(Grafo<T> grafo){
 	boolean[] marca = new boolean[grafo.listaDeVertices().tamanio()]; 
 	for (int i=0; i<=marca.length;i++) {
